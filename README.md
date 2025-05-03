@@ -4,7 +4,7 @@ A web-based sentiment analysis application that accurately classifies complex te
 
 ## Live Demo
 
-Try the live demo at: [https://share.streamlit.io/your-username/nlp-final-demo/main/app.py](https://share.streamlit.io/your-username/nlp-final-demo/main/app.py)
+Try the live demo at: [https://nlp-final-demo.streamlit.app/](https://nlp-final-demo.streamlit.app/)
 
 ## Key Features
 
