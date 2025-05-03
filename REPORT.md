@@ -10,7 +10,7 @@ Nuanced Sentiment Analysis Web Demo
 ✅ Code repository on GitHub
 
 ## Live Demo
-✅ [https://1f5ad16785b5b84012.gradio.live](https://1f5ad16785b5b84012.gradio.live)
+✅ [https://481e557e2c94ed6891.gradio.live](https://481e557e2c94ed6891.gradio.live)
 
 ## GitHub Repository
 🔗 [https://github.com/mattewlondono22/nlp-final-demo](https://github.com/mattewlondono22/nlp-final-demo)

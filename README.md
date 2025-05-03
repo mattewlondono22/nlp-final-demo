@@ -4,7 +4,7 @@ A web-based sentiment analysis application that accurately classifies complex te
 
 ## Live Demo
 
-Try the live demo at: [https://1f5ad16785b5b84012.gradio.live](https://1f5ad16785b5b84012.gradio.live)
+Try the live demo at: [https://481e557e2c94ed6891.gradio.live](https://481e557e2c94ed6891.gradio.live)
 
 ## Key Features
 
