@@ -25,7 +25,7 @@ demo = gr.Interface(
         gr.Number(label="Confidence")
     ],
     title="Nuanced Sentiment Analysis",
-    description="Uses the cardiffnlp/twitter-roberta-base-sentiment-latest model to analyze complex text sentiment."
+    description="Analyzes text sentiment using the cardiffnlp/twitter-roberta-base-sentiment-latest model."
 )
 
 if __name__ == "__main__":
