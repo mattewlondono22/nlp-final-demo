@@ -18,7 +18,7 @@ Nuanced Sentiment Analysis Web Demo
 ## Project Summary (1–2 Pages)
 
 ### Overview
-For my final NLP project, I built a sentiment analysis web app using Hugging Face Transformers and Gradio. The goal was to go beyond basic “positive vs negative” judgments and explore how well models handle complex, paradoxical text.
+For my final NLP project, I built a sentiment analysis web app using Hugging Face Transformers and Streamlit. The goal was to go beyond basic “positive vs negative” judgments and explore how well models handle complex, paradoxical text.
 
 I tested the app with two quotes:
 1. “War is peace. Freedom is slavery. Ignorance is strength.” (George Orwell, 1984)
@@ -33,7 +33,7 @@ These aren’t easy because they mix emotions—so I wanted the system to not ju
   - Better at handling nuanced and complex text
 
 - **Framework**: Transformers (Hugging Face)
-- **UI Framework**: Gradio
+- **UI Framework**: Streamlit
 - **Dependencies**:
   - transformers
   - gradio
@@ -62,7 +62,7 @@ The current implementation successfully:
 ### Challenges
 1. **Model Selection**: Initial models (SST-2, BERT) misclassified complex sentiments as positive. Solution: switched to cardiffnlp/twitter-roberta-base-sentiment-latest which better handles nuanced text.
 2. **Deprecation Issues**: return_all_scores was deprecated, causing nested lists that broke the app logic. Solution: removed breakdown logic and focused on single sentiment prediction.
-3. **Deployment Issues**: Hugging Face Spaces had build issues. Solution: used Gradio's share=True feature to create a temporary public URL.
+3. **Deployment Issues**: Hugging Face Spaces and Gradio had build issues. Solution: deployed on Streamlit Cloud using the GitHub repo.
 
 ### What I Learned
 1. Off-the-shelf models aren’t magic: you must understand how they were trained and what their label spaces are (binary vs three-class, Twitter vs SST-2, etc.).
@@ -76,6 +76,6 @@ The current implementation successfully:
 4. Add more detailed explanations of the model's reasoning
 
 ## ✅ Final Deliverables
-- Live Demo Link (provided)
+- Live Demo Link (provided via Streamlit Cloud)
 - Report Summary (this document)
 - Code and App Tested ✅

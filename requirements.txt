@@ -1,3 +1,5 @@
+streamlit
 transformers
-gradio
 torch
+torchvision
+pillow

@@ -4,7 +4,7 @@ A web-based sentiment analysis application that accurately classifies complex te
 
 ## Live Demo
 
-Try the live demo at: [https://481e557e2c94ed6891.gradio.live](https://481e557e2c94ed6891.gradio.live)
+Try the live demo at: [https://share.streamlit.io/your-username/nlp-final-demo/main/app.py](https://share.streamlit.io/your-username/nlp-final-demo/main/app.py)
 
 ## Key Features
 
@@ -29,10 +29,10 @@ Try the live demo at: [https://481e557e2c94ed6891.gradio.live](https://481e557e2
   - Better at handling nuanced and complex text
 
 - **Framework**: Transformers (Hugging Face)
-- **UI Framework**: Gradio
+- **UI Framework**: Streamlit
 - **Dependencies**:
   - transformers
-  - gradio
+  - streamlit
   - torch
   - Python 3.10+
 
@@ -45,10 +45,10 @@ To run locally:
 pip install -r requirements.txt
 
 # Run the app
-python app.py
+streamlit run app.py
 ```
 
-The app will be available at http://127.0.0.1:7860
+The app will be available at http://localhost:8501
 
 ## License
 

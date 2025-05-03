@@ -1,32 +1,23 @@
-# app.py — Simple POSITIVE/NEGATIVE Sentiment Analyzer
-
+import streamlit as st
 from transformers import pipeline
-import gradio as gr
+from PIL import Image
 
-# Use a model specifically trained on nuanced sentiments
-sentiment_pipeline = pipeline(
-    "sentiment-analysis",
-    model="cardiffnlp/twitter-roberta-base-sentiment-latest"
-)
+# Load the pre-trained model
+classifier = pipeline("image-classification", model="julien-c/hotdog-not-hotdog")
 
-def analyze_sentiment(text):
-    # Run pipeline, get first (and only) result
-    result = sentiment_pipeline(text)[0]  
-    label = result["label"]              # "POSITIVE" or "NEGATIVE"
-    score = result["score"]              # float between 0–1
-    return label, score
+st.title("🌭 Hot Dog? Or Not?")
+st.write("Upload an image, and we'll tell you if it's a hot dog!")
 
-# Build Gradio UI
-demo = gr.Interface(
-    fn=analyze_sentiment,
-    inputs=gr.Textbox(lines=2, placeholder="Type a sentence…"),
-    outputs=[
-        gr.Textbox(label="Sentiment"),
-        gr.Number(label="Confidence")
-    ],
-    title="Nuanced Sentiment Analysis",
-    description="Analyzes text sentiment using the cardiffnlp/twitter-roberta-base-sentiment-latest model."
-)
+# File uploader
+uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
-if __name__ == "__main__":
-    demo.launch(share=True)
+if uploaded_file is not None:
+    image = Image.open(uploaded_file)
+    st.image(image, caption='Uploaded Image.', use_column_width=True)
+    st.write("Classifying...")
+    predictions = classifier(image)
+
+    for prediction in predictions:
+        label = prediction['label']
+        score = prediction['score']
+        st.write(f"**{label}**: {score:.2%}")
