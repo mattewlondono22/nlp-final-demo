@@ -1,10 +1,10 @@
 from transformers import pipeline
 import gradio as gr
 
-# Load the sentiment analysis pipeline with top_k=None
+# Load a simpler sentiment analysis model
 sentiment_pipeline = pipeline(
     "sentiment-analysis",
-    model="siebert/sentiment-roberta-large-english",
+    model="facebook/bart-large-mnli",
     top_k=None
 )
 
@@ -33,7 +33,7 @@ demo = gr.Interface(
         gr.Number(label="Confidence Score")
     ],
     title="Sentiment Analysis Demo",
-    description="Analyze the sentiment of text using a Roberta model."
+    description="Analyze the sentiment of text using a BART model."
 )
 
 if __name__ == "__main__":
