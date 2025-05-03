@@ -1,8 +1,11 @@
 from transformers import pipeline
 import gradio as gr
 
-# Load the sentiment analysis pipeline
-sentiment_pipeline = pipeline("sentiment-analysis")
+# Load a simpler sentiment analysis model
+sentiment_pipeline = pipeline(
+    "sentiment-analysis",
+    model="nlptown/bert-base-multilingual-uncased-sentiment"
+)
 
 def analyze_sentiment(text):
     try:
@@ -29,7 +32,7 @@ demo = gr.Interface(
         gr.Number(label="Confidence Score")
     ],
     title="Sentiment Analysis Demo",
-    description="Analyze the sentiment of text using a default sentiment analysis model."
+    description="Analyze the sentiment of text using a multilingual BERT model."
 )
 
 if __name__ == "__main__":
