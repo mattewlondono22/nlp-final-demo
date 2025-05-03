@@ -1,39 +1,32 @@
+# app.py — Simple POSITIVE/NEGATIVE Sentiment Analyzer
+
 from transformers import pipeline
 import gradio as gr
 
-# Load the sentiment analysis pipeline
+# Use the SST-2 model: always returns POSITIVE or NEGATIVE
 sentiment_pipeline = pipeline(
     "sentiment-analysis",
-    model="cardiffnlp/twitter-roberta-base-sentiment-latest"
+    model="distilbert-base-uncased-finetuned-sst-2-english"
 )
 
 def analyze_sentiment(text):
-    try:
-        # Get the sentiment result
-        result = sentiment_pipeline(text)
-        
-        # Get the label and score
-        label = result[0]["label"]
-        score = result[0]["score"]
-        
-        return label, score
-    except Exception as e:
-        return "Error", 0.0
+    # Run pipeline, get first (and only) result
+    result = sentiment_pipeline(text)[0]  
+    label = result["label"]              # "POSITIVE" or "NEGATIVE"
+    score = result["score"]              # float between 0–1
+    return label, score
 
-# Create Gradio interface
+# Build Gradio UI
 demo = gr.Interface(
     fn=analyze_sentiment,
-    inputs=gr.Textbox(
-        lines=2, placeholder="Enter text here...",
-        label="Enter text to analyze"
-    ),
+    inputs=gr.Textbox(lines=2, placeholder="Type a sentence…"),
     outputs=[
         gr.Textbox(label="Sentiment"),
-        gr.Number(label="Confidence Score")
+        gr.Number(label="Confidence")
     ],
-    title="Sentiment Analysis Demo",
-    description="Analyze the sentiment of text using a fine-tuned RoBERTa model."
+    title="Quick Sentiment Analyzer",
+    description="Uses the SST-2 model for clear POSITIVE/NEGATIVE output."
 )
 
 if __name__ == "__main__":
-    demo.launch(share=True, server_name="0.0.0.0", server_port=7860)
+    demo.launch()
