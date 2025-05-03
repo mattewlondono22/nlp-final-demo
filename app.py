@@ -1,10 +1,10 @@
 from transformers import pipeline
 import gradio as gr
 
-# Load the sentiment analysis pipeline
+# Load a simpler sentiment analysis model
 sentiment_pipeline = pipeline(
     "sentiment-analysis",
-    model="cardiffnlp/twitter-roberta-base-sentiment-latest"
+    model="distilbert-base-uncased-finetuned-sst-2-english"
 )
 
 def analyze_sentiment(text):
@@ -15,8 +15,7 @@ def analyze_sentiment(text):
         # Map the label to a friendly name
         label_map = {
             "LABEL_0": "Negative",
-            "LABEL_1": "Neutral",
-            "LABEL_2": "Positive"
+            "LABEL_1": "Positive"
         }
         
         # Get the label and score
@@ -39,7 +38,7 @@ demo = gr.Interface(
         gr.Number(label="Confidence Score")
     ],
     title="Sentiment Analysis Demo",
-    description="Analyze the sentiment of text using a fine-tuned RoBERTa model."
+    description="Analyze the sentiment of text using a fine-tuned DistilBERT model."
 )
 
 if __name__ == "__main__":
