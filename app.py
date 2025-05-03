@@ -1,54 +1,42 @@
 from transformers import pipeline
 import gradio as gr
 
-# 1) Load a better model with three-way sentiment classes
+# Load the sentiment analysis pipeline
 sentiment_pipeline = pipeline(
     "sentiment-analysis",
-    model="cardiffnlp/twitter-roberta-base-sentiment-latest",
-    return_all_scores=True  # get scores for all classes
+    model="cardiffnlp/twitter-roberta-base-sentiment-latest"
 )
 
-# 2) Map the raw model labels to friendly names
-label_map = {
-    "LABEL_0": "Negative",
-    "LABEL_1": "Neutral",
-    "LABEL_2": "Positive"
-}
-
 def analyze_sentiment(text):
-    # Run the pipeline and grab the first (and only) item
-    scores = sentiment_pipeline(text)[0]  # e.g. [{"label":"LABEL_0","score":…},…]
+    # Get the sentiment result
+    result = sentiment_pipeline(text)[0]
     
-    # Build a dict of {friendly_label: score}
-    breakdown = {
-        label_map[item["label"]]: item["score"]
-        for item in scores
-        if item["label"] in label_map
+    # Map the label to a friendly name
+    label_map = {
+        "LABEL_0": "Negative",
+        "LABEL_1": "Neutral",
+        "LABEL_2": "Positive"
     }
     
-    # Pick the top class by maximum score
-    top_label = max(breakdown, key=breakdown.get)
-    top_score = breakdown[top_label]
+    # Get the label and score
+    label = label_map.get(result["label"], "Unknown")
+    score = result["score"]
     
-    return top_label, top_score, breakdown
+    return label, score
 
-# 3) Build a Gradio UI with three outputs
+# Create Gradio interface
 demo = gr.Interface(
     fn=analyze_sentiment,
     inputs=gr.Textbox(
-        lines=2, placeholder="Enter text here…",
+        lines=2, placeholder="Enter text here...",
         label="Enter text to analyze"
     ),
     outputs=[
-        gr.Textbox(label="Overall Sentiment"),
-        gr.Number(label="Confidence Score"),
-        gr.Label(num_top_classes=3, label="Probability Breakdown")
+        gr.Textbox(label="Sentiment"),
+        gr.Number(label="Confidence Score")
     ],
-    title="Improved Sentiment Analysis",
-    description=(
-        "Uses a RoBERTa model fine-tuned on Twitter data for Negative/Neutral/Positive.  \n"
-        "*Tip:* Check the probability breakdown to see how confident the model is in each category."
-    )
+    title="Sentiment Analysis Demo",
+    description="Analyze the sentiment of text using a fine-tuned RoBERTa model."
 )
 
 if __name__ == "__main__":
