@@ -21,11 +21,13 @@ These aren’t easy because they mix emotions—so I wanted the system to not ju
 - Hugging Face Transformers (pipeline("sentiment-analysis"))
 - Gradio (for the interactive web interface)
 - Python 3.10 with basic dependencies (transformers, gradio, torch)
+- Model: cardiffnlp/twitter-roberta-base-sentiment-latest
 
 ### How It Works
 1. User inputs text
-2. Sentiment pipeline predicts label (positive/negative) and confidence
-3. Gradio shows both as live output on a clean web page
+2. Sentiment pipeline processes text using RoBERTa model
+3. Returns sentiment label (positive/negative) and confidence score
+4. Gradio displays results in real-time on a clean web interface
 
 ### Key Results
 | Quote | Sentiment | Confidence |
@@ -36,9 +38,9 @@ These aren’t easy because they mix emotions—so I wanted the system to not ju
 This is much better than the default model, which initially misclassified both as positive. Now, the system not only gets the right direction but also signals uncertainty on more ambiguous lines (like the second quote).
 
 ### Challenges
-1. **Model Mismatch**: I ran into Hugging Face warnings when using RoBERTa weights inside a BERT-based pipeline. Solution: simplify and stick to the default distilbert-base-uncased-finetuned-sst-2-english.
-2. **Deprecation Issues**: return_all_scores was deprecated, causing nested lists that broke the app logic. I rewired the output to just use top_k=1 to avoid empty sequences.
-3. **Gradio Deployment Limits**: Hugging Face Spaces restricts share=True mode; I worked around this by running the demo locally.
+1. **Model Selection**: Initial models (SST-2, BERT) misclassified complex sentiments as positive. Solution: switched to cardiffnlp/twitter-roberta-base-sentiment-latest which better handles nuanced text.
+2. **Deprecation Issues**: return_all_scores was deprecated, causing nested lists that broke the app logic. Solution: removed breakdown logic and focused on single sentiment prediction.
+3. **Deployment Issues**: Hugging Face Spaces had build issues. Solution: used Gradio's share=True feature to create a temporary public URL.
 
 ### What I Learned
 1. Off-the-shelf models aren’t magic: you must understand how they were trained and what their label spaces are (binary vs three-class, Twitter vs SST-2, etc.).
