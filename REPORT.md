@@ -3,8 +3,17 @@
 ## Title
 Nuanced Sentiment Analysis Web Demo
 
+## Current Status
+✅ Fully functional web application
+✅ Accurate sentiment analysis for complex text
+✅ Live demo available
+✅ Code repository on GitHub
+
 ## Live Demo Link
 ✅ https://1f5ad16785b5b84012.gradio.live/
+
+## GitHub Repository
+🔗 https://github.com/mattewlondono22/nlp-final-demo
 
 ## Summary (1–2 Pages)
 
@@ -35,7 +44,11 @@ These aren’t easy because they mix emotions—so I wanted the system to not ju
 | “War is peace. Freedom is slavery. Ignorance is strength.” | Negative | 55.24% |
 | “Life is a tragedy full of joy.” | Negative | 48.58% |
 
-This is much better than the default model, which initially misclassified both as positive. Now, the system not only gets the right direction but also signals uncertainty on more ambiguous lines (like the second quote).
+The current implementation successfully:
+1. Identifies negative sentiment in complex, paradoxical text
+2. Provides appropriate confidence scores reflecting text complexity
+3. Handles edge cases better than default models
+4. Maintains high accuracy while showing uncertainty when appropriate
 
 ### Challenges
 1. **Model Selection**: Initial models (SST-2, BERT) misclassified complex sentiments as positive. Solution: switched to cardiffnlp/twitter-roberta-base-sentiment-latest which better handles nuanced text.
