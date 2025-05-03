@@ -1,0 +1,6 @@
+.gradio/
+*.pem
+*.pdf
+*.rtf
+*.png
+
