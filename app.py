@@ -1,10 +1,10 @@
 from transformers import pipeline
 import gradio as gr
 
-# Load a simpler sentiment analysis model
+# Load the sentiment analysis pipeline
 sentiment_pipeline = pipeline(
     "sentiment-analysis",
-    model="facebook/bart-large-mnli",
+    model="cardiffnlp/twitter-roberta-base-sentiment-latest",
     top_k=None
 )
 
@@ -13,8 +13,15 @@ def analyze_sentiment(text):
         # Get the sentiment result
         result = sentiment_pipeline(text)[0]
         
+        # Map the label to a human-readable name
+        label_map = {
+            "LABEL_0": "Negative",
+            "LABEL_1": "Neutral",
+            "LABEL_2": "Positive"
+        }
+        
         # Get the label and score
-        label = result["label"]
+        label = label_map.get(result["label"], "Unknown")
         score = result["score"]
         
         return label, score
@@ -33,7 +40,7 @@ demo = gr.Interface(
         gr.Number(label="Confidence Score")
     ],
     title="Sentiment Analysis Demo",
-    description="Analyze the sentiment of text using a BART model."
+    description="Analyze the sentiment of text using a fine-tuned RoBERTa model."
 )
 
 if __name__ == "__main__":
