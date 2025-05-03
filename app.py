@@ -4,25 +4,17 @@ import gradio as gr
 # Load the sentiment analysis pipeline
 sentiment_pipeline = pipeline(
     "sentiment-analysis",
-    model="cardiffnlp/twitter-roberta-base-sentiment-latest",
-    top_k=None
+    model="cardiffnlp/twitter-roberta-base-sentiment-latest"
 )
 
 def analyze_sentiment(text):
     try:
         # Get the sentiment result
-        result = sentiment_pipeline(text)[0]
-        
-        # Map the label to a human-readable name
-        label_map = {
-            "LABEL_0": "Negative",
-            "LABEL_1": "Neutral",
-            "LABEL_2": "Positive"
-        }
+        result = sentiment_pipeline(text)
         
         # Get the label and score
-        label = label_map.get(result["label"], "Unknown")
-        score = result["score"]
+        label = result[0]["label"]
+        score = result[0]["score"]
         
         return label, score
     except Exception as e:
