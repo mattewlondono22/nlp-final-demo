@@ -8,21 +8,24 @@ sentiment_pipeline = pipeline(
 )
 
 def analyze_sentiment(text):
-    # Get the sentiment result
-    result = sentiment_pipeline(text)[0]
-    
-    # Map the label to a friendly name
-    label_map = {
-        "LABEL_0": "Negative",
-        "LABEL_1": "Neutral",
-        "LABEL_2": "Positive"
-    }
-    
-    # Get the label and score
-    label = label_map.get(result["label"], "Unknown")
-    score = result["score"]
-    
-    return label, score
+    try:
+        # Get the sentiment result
+        result = sentiment_pipeline(text)[0]
+        
+        # Map the label to a friendly name
+        label_map = {
+            "LABEL_0": "Negative",
+            "LABEL_1": "Neutral",
+            "LABEL_2": "Positive"
+        }
+        
+        # Get the label and score
+        label = label_map.get(result["label"], "Unknown")
+        score = result["score"]
+        
+        return label, score
+    except Exception as e:
+        return "Error", 0.0
 
 # Create Gradio interface
 demo = gr.Interface(
