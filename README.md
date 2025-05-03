@@ -49,6 +49,7 @@ streamlit run app.py
 ```
 
 The app will be available at http://localhost:8501
+Connect to streamlit ui for free via https://share.streamlit.io/
 
 ## License
 
