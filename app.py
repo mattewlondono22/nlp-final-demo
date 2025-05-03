@@ -1,10 +1,11 @@
 from transformers import pipeline
 import gradio as gr
 
-# Load a simpler sentiment analysis model
+# Load the sentiment analysis pipeline with top_k=None
 sentiment_pipeline = pipeline(
     "sentiment-analysis",
-    model="siebert/sentiment-roberta-large-english"
+    model="siebert/sentiment-roberta-large-english",
+    top_k=None
 )
 
 def analyze_sentiment(text):
