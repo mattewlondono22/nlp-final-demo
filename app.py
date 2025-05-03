@@ -1,25 +1,16 @@
 from transformers import pipeline
 import gradio as gr
 
-# Load a simpler sentiment analysis model
-sentiment_pipeline = pipeline(
-    "sentiment-analysis",
-    model="distilbert-base-uncased-finetuned-sst-2-english"
-)
+# Load the sentiment analysis pipeline
+sentiment_pipeline = pipeline("sentiment-analysis")
 
 def analyze_sentiment(text):
     try:
         # Get the sentiment result
         result = sentiment_pipeline(text)[0]
         
-        # Map the label to a friendly name
-        label_map = {
-            "LABEL_0": "Negative",
-            "LABEL_1": "Positive"
-        }
-        
         # Get the label and score
-        label = label_map.get(result["label"], "Unknown")
+        label = result["label"]
         score = result["score"]
         
         return label, score
@@ -38,7 +29,7 @@ demo = gr.Interface(
         gr.Number(label="Confidence Score")
     ],
     title="Sentiment Analysis Demo",
-    description="Analyze the sentiment of text using a fine-tuned DistilBERT model."
+    description="Analyze the sentiment of text using a default sentiment analysis model."
 )
 
 if __name__ == "__main__":
