@@ -1,6 +1,6 @@
 # 🌟 NLP Final Project Submission
 
-## Title
+## Project Title
 Nuanced Sentiment Analysis Web Demo
 
 ## Current Status
@@ -9,13 +9,13 @@ Nuanced Sentiment Analysis Web Demo
 ✅ Live demo available
 ✅ Code repository on GitHub
 
-## Live Demo Link
-✅ https://1f5ad16785b5b84012.gradio.live/
+## Live Demo
+✅ [https://1f5ad16785b5b84012.gradio.live](https://1f5ad16785b5b84012.gradio.live)
 
 ## GitHub Repository
-🔗 https://github.com/mattewlondono22/nlp-final-demo
+🔗 [https://github.com/mattewlondono22/nlp-final-demo](https://github.com/mattewlondono22/nlp-final-demo)
 
-## Summary (1–2 Pages)
+## Project Summary (1–2 Pages)
 
 ### Overview
 For my final NLP project, I built a sentiment analysis web app using Hugging Face Transformers and Gradio. The goal was to go beyond basic “positive vs negative” judgments and explore how well models handle complex, paradoxical text.
@@ -39,16 +39,17 @@ These aren’t easy because they mix emotions—so I wanted the system to not ju
 4. Gradio displays results in real-time on a clean web interface
 
 ### Key Results
+
 | Quote | Sentiment | Confidence |
 |-------|-----------|------------|
-| “War is peace. Freedom is slavery. Ignorance is strength.” | Negative | 55.24% |
-| “Life is a tragedy full of joy.” | Negative | 48.58% |
+| “War is peace. Freedom is slavery. Ignorance is strength.” | Negative | 55.24% (moderate confidence) |
+| “Life is a tragedy full of joy.” | Negative | 48.58% (lower confidence, reflects ambiguity) |
 
 The current implementation successfully:
 1. Identifies negative sentiment in complex, paradoxical text
-2. Provides appropriate confidence scores reflecting text complexity
-3. Handles edge cases better than default models
-4. Maintains high accuracy while showing uncertainty when appropriate
+2. Provides appropriate confidence scores that reflect text complexity
+3. Handles nuanced and ambiguous text better than default models
+4. Maintains high accuracy while appropriately showing uncertainty in ambiguous cases
 
 ### Challenges
 1. **Model Selection**: Initial models (SST-2, BERT) misclassified complex sentiments as positive. Solution: switched to cardiffnlp/twitter-roberta-base-sentiment-latest which better handles nuanced text.
@@ -61,9 +62,10 @@ The current implementation successfully:
 3. Gradio makes it super fast to build a user-friendly NLP demo, even without a heavy backend.
 
 ### Future Improvements
-1. Train a custom model or fine-tune a RoBERTa-based sentiment classifier on nuanced, paradoxical data.
-2. Expand the app to show a full probability breakdown (positive, negative, neutral) and visual graphs.
-3. Handle multi-sentence or long-text sentiment with models like text-classification instead of just sentiment-analysis.
+1. Train a custom model on nuanced, paradoxical data to potentially improve accuracy
+2. Add visualizations to better show confidence intervals and sentiment breakdowns
+3. Implement multi-sentence analysis capabilities
+4. Add more detailed explanations of the model's reasoning
 
 ## ✅ Final Deliverables
 - Live Demo Link (provided)
