@@ -53,3 +53,5 @@ The app will be available at http://localhost:8501
 ## License
 
 MIT License
+
+<!-- GitAds-Verify: C7FSSABM95U5USS4XLVDUHX3ZFYXYYDS -->
