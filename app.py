@@ -3,10 +3,10 @@
 from transformers import pipeline
 import gradio as gr
 
-# Use the SST-2 model: always returns POSITIVE or NEGATIVE
+# Use a model specifically trained on nuanced sentiments
 sentiment_pipeline = pipeline(
     "sentiment-analysis",
-    model="distilbert-base-uncased-finetuned-sst-2-english"
+    model="cardiffnlp/twitter-roberta-base-sentiment-latest"
 )
 
 def analyze_sentiment(text):
@@ -24,9 +24,9 @@ demo = gr.Interface(
         gr.Textbox(label="Sentiment"),
         gr.Number(label="Confidence")
     ],
-    title="Quick Sentiment Analyzer",
-    description="Uses the SST-2 model for clear POSITIVE/NEGATIVE output."
+    title="Nuanced Sentiment Analysis",
+    description="Uses the cardiffnlp/twitter-roberta-base-sentiment-latest model to analyze complex text sentiment."
 )
 
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(share=True)
