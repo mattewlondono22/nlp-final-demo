@@ -55,3 +55,7 @@ The app will be available at http://localhost:8501
 MIT License
 
 <!-- GitAds-Verify: C7FSSABM95U5USS4XLVDUHX3ZFYXYYDS -->
+
+## GitAds Sponsored
+[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=mattewlondono22/nlp-final-demo@github)](https://gitads.dev/v1/ad-track?source=mattewlondono22/nlp-final-demo@github)
+
