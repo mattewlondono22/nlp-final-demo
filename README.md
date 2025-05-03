@@ -1,17 +1,18 @@
-# Sentiment Analysis Demo
+# Nuanced Sentiment Analysis Demo
 
-A web-based sentiment analysis application that uses a fine-tuned RoBERTa model to classify text as positive, negative, or neutral.
+A web-based sentiment analysis application that accurately classifies complex text using the cardiffnlp/twitter-roberta-base-sentiment-latest model.
 
-## Demo
+## Live Demo
 
 Try the live demo at: [https://1f5ad16785b5b84012.gradio.live](https://1f5ad16785b5b84012.gradio.live)
 
-## Features
+## Key Features
 
 - Real-time sentiment analysis of text input
-- Confidence scores for sentiment predictions
+- Confidence scores reflecting text complexity
 - Uses the `cardiffnlp/twitter-roberta-base-sentiment-latest` model
-- Simple and intuitive web interface
+- Handles nuanced and paradoxical text well
+- Clean and intuitive web interface
 
 ## How to Use
 
@@ -22,12 +23,17 @@ Try the live demo at: [https://1f5ad16785b5b84012.gradio.live](https://1f5ad1678
 ## Technical Details
 
 - **Model**: `cardiffnlp/twitter-roberta-base-sentiment-latest`
+  - Fine-tuned RoBERTa model specifically for sentiment analysis
+  - Better at handling nuanced and complex text
+  - Provides confidence scores to reflect uncertainty
+
 - **Framework**: Transformers (Hugging Face)
 - **UI Framework**: Gradio
 - **Dependencies**:
   - transformers
   - gradio
   - torch
+  - Python 3.10+
 
 ## Local Development
 
