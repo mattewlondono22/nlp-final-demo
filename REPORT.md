@@ -26,17 +26,25 @@ I tested the app with two quotes:
 
 These aren’t easy because they mix emotions—so I wanted the system to not just classify but also reflect confidence, showing where it’s unsure.
 
-### Tools & Setup
-- Hugging Face Transformers (pipeline("sentiment-analysis"))
-- Gradio (for the interactive web interface)
-- Python 3.10 with basic dependencies (transformers, gradio, torch)
-- Model: cardiffnlp/twitter-roberta-base-sentiment-latest
+### Technical Details
+- **Model**: `cardiffnlp/twitter-roberta-base-sentiment-latest`
+  - Fine-tuned RoBERTa model for sentiment analysis
+  - Returns POSITIVE/NEGATIVE labels with confidence scores
+  - Better at handling nuanced and complex text
+
+- **Framework**: Transformers (Hugging Face)
+- **UI Framework**: Gradio
+- **Dependencies**:
+  - transformers
+  - gradio
+  - torch
+  - Python 3.10+
 
 ### How It Works
-1. User inputs text
+1. User inputs text in the text box
 2. Sentiment pipeline processes text using RoBERTa model
-3. Returns sentiment label (positive/negative) and confidence score
-4. Gradio displays results in real-time on a clean web interface
+3. Returns sentiment label (POSITIVE/NEGATIVE) and confidence score (0-1)
+4. Gradio displays results in real-time with clear labels
 
 ### Key Results
 

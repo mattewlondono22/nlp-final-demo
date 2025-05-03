@@ -8,10 +8,11 @@ Try the live demo at: [https://481e557e2c94ed6891.gradio.live](https://481e557e2
 
 ## Key Features
 
-- Real-time sentiment analysis of text input
-- Confidence scores reflecting text complexity
+- Real-time sentiment analysis with confidence scores
+- Simple text input interface
+- Clear sentiment and confidence display
 - Uses the `cardiffnlp/twitter-roberta-base-sentiment-latest` model
-- Handles nuanced and paradoxical text well
+- Handles nuanced and complex text well
 - Clean and intuitive web interface
 
 ## How to Use
@@ -23,9 +24,9 @@ Try the live demo at: [https://481e557e2c94ed6891.gradio.live](https://481e557e2
 ## Technical Details
 
 - **Model**: `cardiffnlp/twitter-roberta-base-sentiment-latest`
-  - Fine-tuned RoBERTa model specifically for sentiment analysis
+  - Fine-tuned RoBERTa model for sentiment analysis
+  - Returns POSITIVE/NEGATIVE labels with confidence scores
   - Better at handling nuanced and complex text
-  - Provides confidence scores to reflect uncertainty
 
 - **Framework**: Transformers (Hugging Face)
 - **UI Framework**: Gradio
